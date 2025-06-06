@@ -1,0 +1,14 @@
+fastapi
+uvicorn
+sqlalchemy
+bcrypt
+python-jose[cryptography]
+pydantic[email]
+pydantic
+passlib
+google-generativeai
+langchain-google-genai
+pandas
+langchain-community
+faiss-gpu
+faiss-cpu
