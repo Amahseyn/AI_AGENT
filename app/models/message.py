@@ -9,7 +9,6 @@ class Message(Base):
     __tablename__ = "messages"
 
     id = Column(Integer, primary_key=True)
-    role = Column(String)  # 'user', 'assistant'
     content = Column(String)
     timestamp = Column(DateTime, default=datetime.utcnow)
     session_id = Column(Integer, ForeignKey("sessions.id"))

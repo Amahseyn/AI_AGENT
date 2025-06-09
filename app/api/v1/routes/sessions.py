@@ -9,7 +9,7 @@ from app.crud.session import create_session, get_sessions_by_user, get_session_b
 from app.dependencies import get_current_user
 from app.database.session import get_db
 
-router = APIRouter()
+router = APIRouter(prefix="/session")
 
 
 @router.post("/", response_model=SessionResponse, status_code=status.HTTP_201_CREATED)
