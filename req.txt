@@ -2,6 +2,8 @@ fastapi
 uvicorn
 sqlalchemy
 bcrypt
+tabula-py
+openpyxl
 psycopg2-binary
 python-jose[cryptography]
 pydantic[email]

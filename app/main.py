@@ -1,7 +1,7 @@
 # app/main.py
 
 from fastapi import FastAPI
-from app.api.v1.routes import users, sessions, messages
+from app.api.v1.routes import users, sessions, messages , schema_extractor
 from app.core.config import settings
 from app.database.session import engine
 from fastapi.middleware.cors import CORSMiddleware
@@ -26,7 +26,7 @@ app.add_middleware(
 app.include_router(users.router, prefix="/api/v1", tags=["users"])
 app.include_router(sessions.router, prefix="/api/v1", tags=["sessions"])
 app.include_router(messages.router, prefix="/api/v1", tags=["messages"])
-
+app.include_router(schema_extractor.router,prefix="/api/v1", tags=["messages"])
 @app.get("/")
 def read_root():
     return {"message": f"Welcome to {settings.APP_NAME}"}

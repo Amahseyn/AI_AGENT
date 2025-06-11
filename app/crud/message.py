@@ -11,3 +11,4 @@ def create_message(db: Session, message: MessageCreate):
 
 def get_messages_by_session(db: Session, session_id: int):
     return db.query(DbMessage).filter(DbMessage.session_id == session_id).all()
+
