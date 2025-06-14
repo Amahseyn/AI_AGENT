@@ -1,10 +1,12 @@
 # app/main.py
 
 from fastapi import FastAPI
-from app.api.v1.routes import users, sessions, messages , schema_extractor
+from app.api.v1.routes import data_importer, users, sessions, messages,data_importer,data_manager
 from app.core.config import settings
 from app.database.session import engine
 from fastapi.middleware.cors import CORSMiddleware
+
+
 
 # Import models so Base has them before creating tables
 from app.models.user import User
@@ -26,7 +28,8 @@ app.add_middleware(
 app.include_router(users.router, prefix="/api/v1", tags=["users"])
 app.include_router(sessions.router, prefix="/api/v1", tags=["sessions"])
 app.include_router(messages.router, prefix="/api/v1", tags=["messages"])
-app.include_router(schema_extractor.router,prefix="/api/v1", tags=["messages"])
+app.include_router(data_importer.router,prefix="/api/v1", tags=["import"])
+app.include_router(data_manager.router,prefix="/api/v1", tags=["manage data"])
 @app.get("/")
 def read_root():
     return {"message": f"Welcome to {settings.APP_NAME}"}
@@ -40,11 +43,3 @@ def initialize_database():
     from sqlalchemy.ext.declarative import declarative_base
     from app.database.session import Base
     Base.metadata.create_all(bind=engine)
-
-from fastapi import APIRouter
-
-router = APIRouter()
-
-@router.get("/")
-def read_root():
-    return {"message": "Welcome to the API"}
